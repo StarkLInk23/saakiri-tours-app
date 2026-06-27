@@ -80,12 +80,12 @@ export default function FormPaquete() {
     <div className="max-w-xl">
       <Link
         to="/admin"
-        className="flex items-center gap-2 text-sm text-[var(--color-selva)] mb-6 hover:text-[var(--color-dorado)] transition-colors"
+        className="flex items-center gap-2 text-sm text-selva mb-6 hover:text-dorado transition-colors"
       >
         <FaArrowLeft size={12} /> Volver al panel
       </Link>
 
-      <h1 className="font-titulo text-3xl text-[var(--color-selva)] mb-6">
+      <h1 className="font-titulo text-3xl text-selva mb-6">
         {esEdicion ? "Editar paquete" : "Nuevo paquete"}
       </h1>
 
@@ -100,7 +100,7 @@ export default function FormPaquete() {
           <input
             type="text"
             {...register("nombre", { required: "El nombre es obligatorio" })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)]"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva"
             placeholder="Ej. Tour Aventura Extrema"
           />
           {errors.nombre && (
@@ -115,7 +115,7 @@ export default function FormPaquete() {
           <input
             type="text"
             {...register("duracion", { required: "La duración es obligatoria" })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)]"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva"
             placeholder="Ej. 2D / 1N"
           />
           {errors.duracion && (
@@ -133,7 +133,7 @@ export default function FormPaquete() {
               required: "La descripción es obligatoria",
               minLength: { value: 10, message: "Mínimo 10 caracteres" },
             })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)] resize-none"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva resize-none"
             placeholder="Describe brevemente el tour..."
           />
           {errors.descripcion && (
@@ -155,7 +155,7 @@ export default function FormPaquete() {
                 required: "Obligatorio",
                 min: { value: 0, message: "Debe ser positivo" },
               })}
-              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)]"
+              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva"
             />
             {errors.precioBasico && (
               <p className="text-red-600 text-xs mt-1">
@@ -175,7 +175,7 @@ export default function FormPaquete() {
                 required: "Obligatorio",
                 min: { value: 0, message: "Debe ser positivo" },
               })}
-              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)]"
+              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva"
             />
             {errors.precioPremium && (
               <p className="text-red-600 text-xs mt-1">
@@ -195,7 +195,7 @@ export default function FormPaquete() {
               required: "Obligatorio",
               min: { value: 1, message: "Mínimo 1" },
             })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)]"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva"
           />
           {errors.minPax && (
             <p className="text-red-600 text-xs mt-1">{errors.minPax.message}</p>
@@ -209,7 +209,7 @@ export default function FormPaquete() {
           <input
             type="text"
             {...register("imagen", { required: "La imagen es obligatoria" })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)]"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva"
             placeholder="https://..."
           />
           {errors.imagen && (
@@ -232,7 +232,7 @@ export default function FormPaquete() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-[var(--color-selva)] text-white font-medium uppercase tracking-wider text-sm py-3.5 hover:bg-[var(--color-dorado)] hover:text-[var(--color-selva)] transition-colors disabled:opacity-60"
+          className="w-full bg-selva text-white font-medium uppercase tracking-wider text-sm py-3.5 hover:bg-dorado hover:text-selva transition-colors disabled:opacity-60"
         >
           {isSubmitting
             ? "Guardando..."

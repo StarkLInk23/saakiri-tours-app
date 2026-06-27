@@ -6,7 +6,7 @@
 export function Loader({ texto = "Cargando..." }) {
   return (
     <div className="flex flex-col items-center justify-center py-24 gap-3">
-      <div className="w-10 h-10 border-4 border-[var(--color-dorado-light)] border-t-[var(--color-selva)] rounded-full animate-spin" />
+      <div className="w-10 h-10 border-4 border-dorado-light border-t-selva rounded-full animate-spin" />
       <p className="text-sm text-gray-500">{texto}</p>
     </div>
   );
@@ -19,7 +19,7 @@ export function ErrorMensaje({ mensaje, onReintentar }) {
       {onReintentar && (
         <button
           onClick={onReintentar}
-          className="bg-[var(--color-selva)] text-white text-sm uppercase tracking-wider px-5 py-2 hover:bg-[var(--color-dorado)] hover:text-[var(--color-selva)] transition-colors"
+          className="bg-selva text-white text-sm uppercase tracking-wider px-5 py-2 hover:bg-dorado hover:text-selva transition-colors"
         >
           Reintentar
         </button>

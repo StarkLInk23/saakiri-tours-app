@@ -32,7 +32,7 @@ export default function Reservar() {
     return (
       <div className="text-center py-24 px-5">
         <p className="text-gray-500 mb-4">No encontramos ese paquete.</p>
-        <Link to="/" className="text-[var(--color-selva)] underline">
+        <Link to="/" className="text-selva underline">
           Volver al catálogo
         </Link>
       </div>
@@ -77,15 +77,15 @@ export default function Reservar() {
     <div className="max-w-lg mx-auto px-5 py-12">
       <button
         onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-sm text-[var(--color-selva)] mb-6 hover:text-[var(--color-dorado)] transition-colors"
+        className="flex items-center gap-2 text-sm text-selva mb-6 hover:text-dorado transition-colors"
       >
         <FaArrowLeft size={12} /> Volver
       </button>
 
-      <p className="text-xs uppercase tracking-widest text-[var(--color-dorado)] mb-1">
+      <p className="text-xs uppercase tracking-widest text-dorado mb-1">
         Reserva tu aventura
       </p>
-      <h1 className="font-titulo text-3xl text-[var(--color-selva)] mb-1">
+      <h1 className="font-titulo text-3xl text-selva mb-1">
         {paquete.nombre}
       </h1>
       <p className="text-sm text-gray-500 mb-8">
@@ -104,7 +104,7 @@ export default function Reservar() {
               required: "El nombre es obligatorio",
               minLength: { value: 3, message: "Mínimo 3 caracteres" },
             })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)] transition-colors"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
             placeholder="Ej. María García"
           />
           {errors.nombreCliente && (
@@ -128,7 +128,7 @@ export default function Reservar() {
                 message: "Ingresa un teléfono válido",
               },
             })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)] transition-colors"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
             placeholder="Ej. +51 982 123 456"
           />
           {errors.telefono && (
@@ -150,7 +150,7 @@ export default function Reservar() {
                 message: "Ingresa un correo válido",
               },
             })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)] transition-colors"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
             placeholder="Ej. correo@ejemplo.com"
           />
           {errors.email && (
@@ -169,7 +169,7 @@ export default function Reservar() {
               {...register("fechaTour", {
                 required: "Selecciona una fecha",
               })}
-              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)] transition-colors"
+              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
             />
             {errors.fechaTour && (
               <p className="text-red-600 text-xs mt-1">
@@ -189,7 +189,7 @@ export default function Reservar() {
                 min: { value: paquete.minPax, message: `Mínimo ${paquete.minPax}` },
               })}
               defaultValue={paquete.minPax}
-              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)] transition-colors"
+              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
             />
             {errors.numPersonas && (
               <p className="text-red-600 text-xs mt-1">
@@ -207,7 +207,7 @@ export default function Reservar() {
           <textarea
             {...register("mensaje")}
             rows={3}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-[var(--color-selva)] transition-colors resize-none"
+            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors resize-none"
             placeholder="Cuéntanos algo más sobre tu viaje..."
           />
         </div>
@@ -215,7 +215,7 @@ export default function Reservar() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-[var(--color-selva)] text-white font-medium uppercase tracking-wider text-sm py-3.5 hover:bg-[var(--color-dorado)] hover:text-[var(--color-selva)] transition-colors disabled:opacity-60"
+          className="w-full bg-selva text-white font-medium uppercase tracking-wider text-sm py-3.5 hover:bg-dorado hover:text-selva transition-colors disabled:opacity-60"
         >
           {isSubmitting ? "Enviando..." : "Confirmar reserva"}
         </button>

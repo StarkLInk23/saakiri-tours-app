@@ -26,7 +26,7 @@ export default function DetallePaquete() {
         </p>
         <Link
           to="/"
-          className="text-[var(--color-selva)] underline hover:text-[var(--color-dorado)]"
+          className="text-selva underline hover:text-dorado"
         >
           Volver al catálogo
         </Link>
@@ -41,7 +41,7 @@ export default function DetallePaquete() {
     <div className="max-w-5xl mx-auto px-5 py-12">
       <button
         onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-sm text-[var(--color-selva)] mb-6 hover:text-[var(--color-dorado)] transition-colors"
+        className="flex items-center gap-2 text-sm text-selva mb-6 hover:text-dorado transition-colors"
       >
         <FaArrowLeft size={12} /> Volver
       </button>
@@ -58,10 +58,10 @@ export default function DetallePaquete() {
         />
 
         <div>
-          <p className="text-xs uppercase tracking-widest text-[var(--color-tierra)] mb-2 flex items-center gap-2">
+          <p className="text-xs uppercase tracking-widest text-tierra mb-2 flex items-center gap-2">
             <FaClock size={12} /> {duracion}
           </p>
-          <h1 className="font-titulo text-4xl text-[var(--color-selva)] mb-4">
+          <h1 className="font-titulo text-4xl text-selva mb-4">
             {nombre}
           </h1>
           <p className="text-gray-600 leading-relaxed mb-6">{descripcion}</p>
@@ -72,18 +72,18 @@ export default function DetallePaquete() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-8">
-            <div className="border border-[var(--color-dorado-light)] p-4 text-center">
+            <div className="border border-dorado-light p-4 text-center">
               <p className="text-xs uppercase text-gray-400 mb-1">Básico</p>
-              <p className="font-titulo text-2xl text-[var(--color-selva)]">
+              <p className="font-titulo text-2xl text-selva">
                 ${precioBasico}
               </p>
               <p className="text-xs text-gray-400">USD / persona</p>
             </div>
-            <div className="border border-[var(--color-dorado)] bg-[var(--color-dorado-light)]/20 p-4 text-center">
-              <p className="text-xs uppercase text-[var(--color-tierra)] mb-1">
+            <div className="border border-dorado bg-dorado-light/20 p-4 text-center">
+              <p className="text-xs uppercase text-tierra mb-1">
                 Premium
               </p>
-              <p className="font-titulo text-2xl text-[var(--color-selva)]">
+              <p className="font-titulo text-2xl text-selva">
                 ${precioPremium}
               </p>
               <p className="text-xs text-gray-400">USD / persona</p>
@@ -92,7 +92,7 @@ export default function DetallePaquete() {
 
           <Link
             to={`/reservar/${paquete.id}`}
-            className="block text-center bg-[var(--color-dorado)] text-[var(--color-selva)] font-medium uppercase tracking-wider text-sm py-3.5 border-2 border-[var(--color-dorado)] hover:bg-transparent hover:text-[var(--color-selva)] transition-colors"
+            className="block text-center bg-dorado text-selva font-medium uppercase tracking-wider text-sm py-3.5 border-2 border-dorado hover:bg-transparent hover:text-selva transition-colors"
           >
             Reservar este paquete
           </Link>

@@ -24,7 +24,7 @@ export default function AdminPaquetes() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-titulo text-3xl text-[var(--color-selva)]">
+          <h1 className="font-titulo text-3xl text-selva">
             Gestión de Paquetes
           </h1>
           <p className="text-sm text-gray-500">
@@ -34,7 +34,7 @@ export default function AdminPaquetes() {
         </div>
         <Link
           to="/admin/nuevo"
-          className="flex items-center gap-2 bg-[var(--color-selva)] text-white text-sm font-medium uppercase tracking-wider px-5 py-2.5 hover:bg-[var(--color-dorado)] hover:text-[var(--color-selva)] transition-colors"
+          className="flex items-center gap-2 bg-selva text-white text-sm font-medium uppercase tracking-wider px-5 py-2.5 hover:bg-dorado hover:text-selva transition-colors"
         >
           <FaPlus size={12} /> Nuevo paquete
         </Link>
@@ -43,7 +43,7 @@ export default function AdminPaquetes() {
       <div className="bg-white shadow-sm overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-[var(--color-selva)] text-white text-left">
+            <tr className="bg-selva text-white text-left">
               <th className="px-4 py-3">Paquete</th>
               <th className="px-4 py-3">Duración</th>
               <th className="px-4 py-3 text-center">Básico</th>
@@ -61,7 +61,7 @@ export default function AdminPaquetes() {
                   i % 2 === 0 ? "bg-gray-50/50" : "bg-white"
                 }`}
               >
-                <td className="px-4 py-3 font-medium text-[var(--color-selva)]">
+                <td className="px-4 py-3 font-medium text-selva">
                   {p.nombre}
                 </td>
                 <td className="px-4 py-3 text-gray-500">{p.duracion}</td>
@@ -84,7 +84,7 @@ export default function AdminPaquetes() {
                   <div className="flex items-center justify-center gap-3">
                     <Link
                       to={`/admin/editar/${p.id}`}
-                      className="text-[var(--color-selva)] hover:text-[var(--color-dorado)] transition-colors"
+                      className="text-selva hover:text-dorado transition-colors"
                       title="Editar"
                     >
                       <FaEdit />

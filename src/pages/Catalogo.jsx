@@ -27,7 +27,7 @@ export default function Catalogo() {
           <h1 className="font-titulo text-5xl font-semibold mb-4 leading-tight drop-shadow-lg">
             Disfruta tu estadía en Tambopata
           </h1>
-          <p className="font-titulo italic text-xl text-[var(--color-dorado-light)] mb-6">
+          <p className="font-titulo italic text-xl text-dorado-light mb-6">
             "Explora sin límites, viaja con el alma."
           </p>
           <p className="text-base font-light opacity-90 mb-8">
@@ -36,7 +36,7 @@ export default function Catalogo() {
           </p>
           <a
             href="#paquetes"
-            className="inline-block bg-[var(--color-dorado)] text-[var(--color-selva)] text-sm font-medium uppercase tracking-widest px-9 py-3.5 border-2 border-[var(--color-dorado)] hover:bg-transparent hover:text-[var(--color-dorado-light)] transition-colors"
+            className="inline-block bg-dorado text-selva text-sm font-medium uppercase tracking-widest px-9 py-3.5 border-2 border-dorado hover:bg-transparent hover:text-dorado-light transition-colors"
           >
             Ver paquetes
           </a>
@@ -46,10 +46,10 @@ export default function Catalogo() {
       {/* PAQUETES */}
       <section id="paquetes" className="py-20 px-5 max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-dorado)] mb-2">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-dorado mb-2">
             Nuestros programas
           </p>
-          <h2 className="font-titulo text-4xl text-[var(--color-selva)] mb-2">
+          <h2 className="font-titulo text-4xl text-selva mb-2">
             Elige tu aventura
           </h2>
           <p className="text-gray-500">
@@ -77,11 +77,11 @@ export default function Catalogo() {
       </section>
 
       {/* CONTACTO RÁPIDO */}
-      <section className="bg-[var(--color-selva)] text-[var(--color-crema)] py-16 px-5 text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-dorado)] mb-2">
+      <section className="bg-selva text-crema py-16 px-5 text-center">
+        <p className="text-xs uppercase tracking-[0.2em] text-dorado mb-2">
           Empieza tu aventura
         </p>
-        <h2 className="font-titulo text-3xl text-[var(--color-dorado-light)] mb-4">
+        <h2 className="font-titulo text-3xl text-dorado-light mb-4">
           ¿Listo para explorar la Amazonía?
         </h2>
         <p className="opacity-85 max-w-md mx-auto mb-8">
@@ -90,7 +90,7 @@ export default function Catalogo() {
         </p>
         <a
           href="#paquetes"
-          className="inline-block bg-[var(--color-dorado)] text-[var(--color-selva)] text-sm font-medium uppercase tracking-wider px-8 py-3 border-2 border-[var(--color-dorado)] hover:bg-transparent hover:text-[var(--color-dorado-light)] transition-colors"
+          className="inline-block bg-dorado text-selva text-sm font-medium uppercase tracking-wider px-8 py-3 border-2 border-dorado hover:bg-transparent hover:text-dorado-light transition-colors"
         >
           Ver paquetes disponibles
         </a>

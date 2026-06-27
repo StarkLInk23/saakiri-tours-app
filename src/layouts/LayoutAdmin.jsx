@@ -10,14 +10,14 @@ import { FaLeaf, FaArrowLeft } from "react-icons/fa";
 export default function LayoutAdmin() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <header className="bg-[var(--color-selva)] text-white px-6 h-16 flex items-center justify-between">
+      <header className="bg-selva text-white px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2 font-titulo text-lg">
-          <FaLeaf className="text-[var(--color-dorado)]" />
+          <FaLeaf className="text-dorado" />
           Panel Administrativo · Sáakiri
         </div>
         <Link
           to="/"
-          className="flex items-center gap-2 text-sm uppercase tracking-wider text-[var(--color-dorado-light)] hover:text-white transition-colors"
+          className="flex items-center gap-2 text-sm uppercase tracking-wider text-dorado-light hover:text-white transition-colors"
         >
           <FaArrowLeft size={12} /> Ver sitio público
         </Link>
