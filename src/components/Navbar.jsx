@@ -28,11 +28,6 @@ export default function Navbar() {
                 Inicio
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/admin" className={linkClasses}>
-                Admin
-              </NavLink>
-            </li>
           </ul>
         </nav>
       </div>

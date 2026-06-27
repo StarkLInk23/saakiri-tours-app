@@ -15,9 +15,6 @@ export default function Footer() {
         <Link to="/" className="text-xs uppercase tracking-wider hover:text-dorado">
           Inicio
         </Link>
-        <Link to="/admin" className="text-xs uppercase tracking-wider hover:text-dorado">
-          Admin
-        </Link>
       </nav>
 
       <p className="text-xs">
