@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-selva: #2d5016;
+  --color-selva-light: #4a7c2f;
+  --color-dorado: #c9a84c;
+  --color-dorado-light: #e8d5a3;
+  --color-crema: #f5f0e8;
+  --color-tierra: #8b6914;
+
+  --font-titulo: "Cormorant Garamond", serif;
+  --font-cuerpo: "Jost", sans-serif;
+}
+
+body {
+  font-family: var(--font-cuerpo);
+  background-color: var(--color-crema);
+}
+
+.font-titulo {
+  font-family: var(--font-titulo);
+}
