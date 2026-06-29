@@ -9,19 +9,29 @@ export default function Navbar() {
     }`;
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-crema/95 backdrop-blur-sm border-b-2 border-dorado z-50">
-      <div className="max-w-6xl mx-auto px-5 h-72px flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="font-titulo text-xl font-semibold text-selva leading-tight">
-            Sáakiri Tours &amp; Travel
-            <span className="block text-xs font-normal italic text-tierra">
+    <header className="fixed inset-x-0 -top-px z-50 bg-crema/95 backdrop-blur-sm border-b-2 border-dorado">
+      <div className="max-w-6xl mx-auto h-72px px-6 flex items-center justify-between">
+
+        <Link to="/" className="flex items-center gap-4">
+          <img
+            src="https://saakiriamazonia.wordpress.com/wp-content/uploads/2025/02/cropped-logo-transp.png"
+            alt="Sáakiri Tours & Travel"
+            className="h-[68px] w-auto object-contain"
+          />
+
+          <div className="leading-tight">
+            <h1 className="font-titulo text-2xl font-semibold text-selva">
+              Sáakiri Tours &amp; Travel
+            </h1>
+
+            <p className="text-sm italic text-tierra">
               Puerto Maldonado · Perú
-            </span>
+            </p>
           </div>
         </Link>
 
         <nav>
-          <ul className="flex items-center gap-7">
+          <ul className="flex items-center gap-8">
             <li>
               <NavLink to="/" className={linkClasses}>
                 Inicio
@@ -29,6 +39,7 @@ export default function Navbar() {
             </li>
           </ul>
         </nav>
+
       </div>
     </header>
   );

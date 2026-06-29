@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+}
+
 @theme {
   --color-selva: #2d5016;
   --color-selva-light: #4a7c2f;
