@@ -1,5 +1,7 @@
 # Sáakiri Tours & Travel — App de Gestión de Paquetes Turísticos
 
+🔗 **Demo en vivo:** [super-lebkuchen-4db09e.netlify.app](https://super-lebkuchen-4db09e.netlify.app/)
+
 Aplicación web desarrollada como Segunda Parte del Proyecto Integrador del curso de Desarrollo Web. Catálogo público de paquetes turísticos con sistema de reservas, y panel administrativo con operaciones CRUD completas, conectado a una API REST simulada (MockAPI).
 
 ## 🌿 Sobre el proyecto
