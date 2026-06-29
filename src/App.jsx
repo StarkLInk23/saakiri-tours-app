@@ -1,5 +1,3 @@
-// src/App.jsx
-//
 // Define todas las rutas de la aplicación con React Router DOM.
 // Separa rutas públicas (LayoutPublico) de rutas administrativas
 // (LayoutAdmin), estas últimas protegidas por RutaProtegida:

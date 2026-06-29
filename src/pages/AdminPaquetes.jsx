@@ -1,5 +1,3 @@
-// src/pages/AdminPaquetes.jsx
-//
 // Panel administrativo: tabla con todos los paquetes (activos e inactivos)
 // y acciones de editar / eliminar. El "activo" se puede togglear directo
 // desde la tabla para simular publicar/despublicar un paquete.

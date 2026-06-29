@@ -1,5 +1,3 @@
-// src/components/__tests__/PaqueteCard.test.jsx
-//
 // Prueba básica del componente PaqueteCard: verifica que renderice
 // correctamente el nombre, precio y duración de un paquete de prueba.
 

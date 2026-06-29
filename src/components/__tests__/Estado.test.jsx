@@ -1,5 +1,3 @@
-// src/components/__tests__/Estado.test.jsx
-//
 // Pruebas básicas de los componentes de estado (carga / error).
 
 import { describe, it, expect, vi } from "vitest";

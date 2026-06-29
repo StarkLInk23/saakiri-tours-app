@@ -1,5 +1,3 @@
-// src/layouts/LayoutPublico.jsx
-//
 // Layout compartido por las páginas públicas (Catálogo, Detalle, Reserva).
 // Usa <Outlet /> de React Router para renderizar la página activa.
 

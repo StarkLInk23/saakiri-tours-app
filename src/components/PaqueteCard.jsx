@@ -1,4 +1,3 @@
-// src/components/PaqueteCard.jsx
 import { Link } from "react-router-dom";
 
 export default function PaqueteCard({ paquete }) {

@@ -1,5 +1,3 @@
-// src/components/Estado.jsx
-//
 // Componentes pequeños para estados de carga y error,
 // reutilizados en Catálogo, Detalle y Admin.
 

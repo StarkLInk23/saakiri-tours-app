@@ -1,5 +1,3 @@
-// src/pages/DetallePaquete.jsx
-//
 // Página de detalle de un paquete específico. Lee el :id de la URL
 // con useParams y busca el paquete dentro del contexto global.
 

@@ -1,5 +1,3 @@
-// src/layouts/LayoutAdmin.jsx
-//
 // Layout del panel administrativo. Distinto del público:
 // usa una barra superior simple + contenido a ancho completo,
 // para que las tablas de gestión tengan más espacio.

@@ -1,5 +1,3 @@
-// src/components/RutaProtegida.jsx
-//
 // Envuelve las rutas que requieren sesión de administrador.
 // Si no hay sesión activa, redirige a /admin/login y recuerda
 // la ruta de destino original para volver allí tras el login.

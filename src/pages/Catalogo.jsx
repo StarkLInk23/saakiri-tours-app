@@ -1,5 +1,3 @@
-// src/pages/Catalogo.jsx
-//
 // Página pública principal: hero + grid de paquetes turísticos.
 // Consume el contexto global de paquetes y filtra solo los "activo: true".
 

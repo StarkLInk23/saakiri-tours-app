@@ -1,5 +1,3 @@
-// src/pages/AdminLogin.jsx
-//
 // Página de inicio de sesión para el panel administrativo.
 // Usa React Hook Form para validar campos, y el AuthContext
 // para verificar las credenciales (simuladas).

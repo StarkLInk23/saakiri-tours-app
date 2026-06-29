@@ -1,5 +1,3 @@
-// src/pages/Reservar.jsx
-//
 // Formulario de reserva controlado con React Hook Form.
 // Valida los campos antes de enviar, y hace POST al recurso /reservas
 // de MockAPI. Usa SweetAlert2 para confirmar el envío.

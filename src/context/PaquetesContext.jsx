@@ -1,10 +1,3 @@
-// src/context/PaquetesContext.jsx
-//
-// Context API: estado global de paquetes turísticos.
-// Evita pasar props manualmente entre Catálogo, Admin y Detalle.
-// Centraliza también las funciones CRUD para que cualquier componente
-// pueda llamarlas y el estado se actualice automáticamente en toda la app.
-
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import Swal from "sweetalert2";
 import {

@@ -1,5 +1,3 @@
-// src/pages/FormPaquete.jsx
-//
 // Formulario único para CREAR y EDITAR paquetes (CRUD).
 // Detecta si hay un :id en la URL: si existe, precarga los datos
 // y llama a editarPaquete; si no, llama a agregarPaquete.
