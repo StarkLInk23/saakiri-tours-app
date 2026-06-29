@@ -86,10 +86,6 @@ npm run preview
 
 El proyecto incluye pruebas unitarias básicas de componentes usando Vitest + React Testing Library, cubriendo renderizado de datos y comportamiento de interacción (clicks, props condicionales).
 
-## 📦 Deploy
-
-Proyecto listo para desplegar en **Vercel** o **Netlify**: build estático generado con `npm run build` en la carpeta `dist/`.
-
 ---
 
 Puerto Maldonado, Madre de Dios — Perú · 2026
