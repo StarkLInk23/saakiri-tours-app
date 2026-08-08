@@ -1,93 +1,116 @@
-# Sáakiri Tours & Travel — App de Gestión de Paquetes Turísticos
+# 🌿 Sáakiri Tours & Travel
 
-🔗 **Demo en vivo:** [saakiri-tours.netlify.app](https://saakiri-tours.netlify.app/)
+> Plataforma web para la gestión de paquetes turísticos y reservas de **Sáakiri Tours & Travel**, agencia de turismo especializada en experiencias en la Amazonía peruana.
 
-Aplicación web desarrollada como Segunda Parte del Proyecto Integrador del curso de Desarrollo Web. Catálogo público de paquetes turísticos con sistema de reservas, y panel administrativo con operaciones CRUD completas, conectado a una API REST simulada (MockAPI).
+## ✨ Sobre el proyecto
 
-## 🌿 Sobre el proyecto
+Sáakiri Tours permite a los usuarios explorar paquetes turísticos, consultar sus detalles y realizar solicitudes de reserva.
 
-**Sáakiri Tours & Travel** es una agencia de turismo real ubicada en Puerto Maldonado, Madre de Dios, Perú, especializada en experiencias en la Reserva Nacional de Tambopata.
+El sistema cuenta además con un **panel administrativo** para gestionar los paquetes mediante operaciones CRUD y una **API REST propia** conectada a PostgreSQL.
 
-## 🛠️ Stack Tecnológico
+### 🚀 Características
 
-| Capa | Tecnología |
-|---|---|
-| Frontend | React 19 + Vite |
-| Estilos | Tailwind CSS v4 |
-| Routing | React Router DOM v7 |
-| HTTP Client | Axios |
-| Formularios | React Hook Form |
-| Notificaciones | SweetAlert2 |
-| Iconos | React Icons |
-| Backend (simulado) | MockAPI.io (REST) |
-| Testing | Vitest + React Testing Library |
-
-## 📂 Estructura del proyecto
-
-```
-src/
-├── components/       # Componentes reutilizables (Navbar, Footer, Card, Estado)
-│   └── __tests__/    # Pruebas unitarias de componentes
-├── context/          # Context API (estado global de paquetes)
-├── layouts/          # Layouts compartidos (público y admin)
-├── pages/            # Páginas/vistas de la aplicación
-├── services/         # Capa de comunicación con la API (Axios)
-├── App.jsx           # Definición de rutas
-└── main.jsx          # Punto de entrada
-```
-
-## 🗺️ Rutas de la aplicación
-
-| Ruta | Descripción | Acceso |
-|---|---|---|
-| `/` | Catálogo público de paquetes | Público |
-| `/paquete/:id` | Detalle de un paquete específico | Público |
-| `/reservar/:id` | Formulario de reserva | Público |
-| `/admin` | Panel de gestión (listado + CRUD) | Admin |
-| `/admin/nuevo` | Crear nuevo paquete | Admin |
-| `/admin/editar/:id` | Editar paquete existente | Admin |
-
-## 🔌 API REST (MockAPI)
-
-Recurso `paquetes`:
-
-```
-GET    /paquetes        → Listar todos los paquetes
-GET    /paquetes/:id    → Obtener un paquete
-POST   /paquetes        → Crear un paquete
-PUT    /paquetes/:id    → Actualizar un paquete
-DELETE /paquetes/:id    → Eliminar un paquete
-```
-
-Recurso `reservas`:
-
-```
-POST   /reservas        → Registrar una nueva reserva
-```
-
-## 🚀 Cómo correr el proyecto localmente
-
-```bash
-# Instalar dependencias
-npm install
-
-# Modo desarrollo
-npm run dev
-
-# Ejecutar pruebas
-npm run test
-
-# Build de producción
-npm run build
-
-# Previsualizar build de producción
-npm run preview
-```
-
-## 🧪 Testing
-
-El proyecto incluye pruebas unitarias básicas de componentes usando Vitest + React Testing Library, cubriendo renderizado de datos y comportamiento de interacción (clicks, props condicionales).
+* 🌴 Catálogo de paquetes turísticos
+* 🔎 Detalle de cada experiencia
+* 📋 Registro de reservas
+* 🔐 Autenticación administrativa
+* ⚙️ Panel de administración
+* ✏️ CRUD de paquetes
+* 🔄 Comunicación mediante API REST
+* 🗄️ Persistencia con PostgreSQL
+* 📱 Diseño responsive
+* 🧪 Pruebas básicas del frontend
 
 ---
 
-Puerto Maldonado, Madre de Dios — Perú · 2026
+## 🏗️ Arquitectura
+
+```text
+React + Vite
+     │
+   Axios
+     │
+     ▼
+Node.js + Express
+     │
+   Prisma
+     │
+     ▼
+PostgreSQL
+```
+
+El proyecto está dividido en dos repositorios:
+
+* **Frontend:** `saakiri-tours-app`
+* **Backend:** `saakiri-tours-backend`
+
+---
+
+## 🧰 Tecnologías utilizadas
+
+### 🎨 Frontend
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white" alt="React Router" />
+</p>
+
+### ⚙️ Backend & Base de datos
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
+  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+</p>
+
+### 🧩 Librerías & Testing
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios" />
+  <img src="https://img.shields.io/badge/React_Hook_Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white" alt="React Hook Form" />
+  <img src="https://img.shields.io/badge/SweetAlert2-FF6B6B?style=for-the-badge&logo=sweetalert2&logoColor=white" alt="SweetAlert2" />
+  <img src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
+  <img src="https://img.shields.io/badge/React_Testing_Library-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white" alt="React Testing Library" />
+</p>
+
+---
+
+## 🚀 Instalación
+
+### Frontend
+
+```bash
+git clone https://github.com/StarkLInk23/saakiri-tours-app.git
+cd saakiri-tours-app
+npm install
+npm run dev
+```
+
+### Backend
+
+```bash
+git clone https://github.com/StarkLInk23/saakiri-tours-backend.git
+cd saakiri-tours-backend
+npm install
+npm run dev
+```
+
+> El backend requiere las variables de entorno necesarias para la conexión con PostgreSQL y la configuración de autenticación.
+
+---
+
+## 📌 Estado
+
+🟡 **En desarrollo**
+
+El proyecto se encuentra en proceso de integración y preparación para producción, incorporando progresivamente backend propio, PostgreSQL, autenticación, validaciones, testing y despliegue.
+
+---
+
+<p align="center">
+  🌿 <strong>Sáakiri Tours & Travel</strong><br>
+  Puerto Maldonado, Madre de Dios — Perú · 2026
+</p>

@@ -24,7 +24,7 @@ export default function Reservar() {
 
   if (cargando) return <Loader texto="Cargando..." />;
 
-  const paquete = paquetes.find((p) => p.id === id);
+  const paquete = paquetes.find((p) => String(p.id) === String(id));
 
   if (!paquete) {
     return (

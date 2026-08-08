@@ -36,7 +36,7 @@ export default function FormPaquete() {
   // Si estamos editando, precargamos los datos del paquete una vez cargado el contexto
   useEffect(() => {
     if (esEdicion && !cargando) {
-      const paquete = paquetes.find((p) => p.id === id);
+      const paquete = paquetes.find((p) => String(p.id) === String(id));
       if (paquete) {
         reset({
           nombre: paquete.nombre,

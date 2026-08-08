@@ -14,7 +14,7 @@ export default function DetallePaquete() {
   if (cargando) return <Loader texto="Cargando detalle del paquete..." />;
   if (error) return <ErrorMensaje mensaje={error} />;
 
-  const paquete = paquetes.find((p) => p.id === id);
+  const paquete = paquetes.find((p) => String(p.id) === String(id));
 
   if (!paquete) {
     return (

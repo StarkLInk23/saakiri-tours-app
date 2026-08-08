@@ -1,27 +1,29 @@
 import { createContext, useContext, useState } from "react";
+import { loginAdmin } from "../services/api";
 
 const AuthContext = createContext(null);
 
-const ADMIN_CREDENTIALS = {
-  usuario: "admin",
-  password: "saakiri2026",
-};
-
 export function AuthProvider({ children }) {
-  const [autenticado, setAutenticado] = useState(false);
+  // Inicializa leyendo el token de localStorage — persiste entre recargas
+  const [autenticado, setAutenticado] = useState(() => {
+    return Boolean(localStorage.getItem("token"));
+  });
 
-  function login(usuario, password) {
-    const esValido =
-      usuario === ADMIN_CREDENTIALS.usuario &&
-      password === ADMIN_CREDENTIALS.password;
-
-    if (esValido) {
+  async function login(usuario, password) {
+    try {
+      const { token, nombre } = await loginAdmin(usuario, password);
+      localStorage.setItem("token", token);
+      localStorage.setItem("nombreAdmin", nombre);
       setAutenticado(true);
+      return true;
+    } catch (err) {
+      return false;
     }
-    return esValido;
   }
 
   function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("nombreAdmin");
     setAutenticado(false);
   }
 
