@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+/* Permitir modo oscuro por clase */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  @apply bg-white text-gray-900;
+}
+
+.dark body {
+  @apply bg-gray-900 text-gray-100;
+}
+
 html,
 body,
 #root {

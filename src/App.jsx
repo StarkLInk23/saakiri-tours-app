@@ -18,10 +18,13 @@ import AdminPaquetes from "./pages/AdminPaquetes";
 import FormPaquete from "./pages/FormPaquete";
 import NoEncontrado from "./pages/NoEncontrado";
 
+import ThemeToggle from './components/ThemeToggle';
+
 export default function App() {
   return (
     <AuthProvider>
       <PaquetesProvider>
+        <ThemeToggle />
         <ScrollToTop />
         <Routes>
           <Route element={<LayoutPublico />}>

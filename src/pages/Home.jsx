@@ -3,6 +3,7 @@ import { usePaquetes } from "../context/PaquetesContext";
 import PaqueteCard from "../components/PaqueteCard";
 import { Loader } from "../components/Estado";
 import { FaLeaf, FaShieldAlt, FaStar, FaArrowRight } from "react-icons/fa";
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const stats = [
   { valor: "6+", label: "Paquetes turísticos" },
@@ -186,6 +187,7 @@ export default function Home() {
           Ver paquetes <FaArrowRight size={11} />
         </Link>
       </section>
+      <WhatsAppButton />
     </div>
   );
 }
