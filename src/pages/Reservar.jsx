@@ -10,6 +10,8 @@ import { usePaquetes } from "../context/PaquetesContext";
 import { crearReserva } from "../services/api";
 import { Loader } from "../components/Estado";
 import { FaArrowLeft } from "react-icons/fa";
+import { toPng } from "html-to-image";
+import { useRef } from "react";
 
 export default function Reservar() {
   const { id } = useParams();
@@ -17,6 +19,7 @@ export default function Reservar() {
   const { paquetes, cargando } = usePaquetes();
 
   const [tipo, setTipo] = useState("basico");
+  const boletaRef = useRef(null);
 
   const {
     register,
@@ -46,57 +49,71 @@ export default function Reservar() {
     );
   }
 
-  function descargarBoletaTXT(datos, paquete, tipo, precioSeleccionado) {
-    const personas = Number(datos.numPersonas);
-    const total = precioSeleccionado * personas;
+  async function descargarBoletaPNG() {
+    if (!boletaRef.current) return;
 
-    const contenido = `
-  ==============================
-          SÁAKIRI TOURS
-    Puerto Maldonado - Perú
-  ==============================
-
-  ¡Gracias por reservar con nosotros!
-
-  Cliente: ${datos.nombreCliente}
-  Teléfono: ${datos.telefono}
-  Correo: ${datos.email}
-
-  Paquete: ${paquete.nombre}
-  Duración: ${paquete.duracion}
-  Plan: ${tipo.toUpperCase()}
-  Personas: ${personas}
-  Fecha del tour: ${datos.fechaTour}
-
-  Precio por persona: $${precioSeleccionado} USD
-  TOTAL: $${total} USD
-
-  Mensaje:
-  ${datos.mensaje || "Sin comentarios"}
-
-  Fecha de emisión:
-  ${new Date().toLocaleString()}
-
-  Te esperamos para vivir una aventura inolvidable
-  en la Amazonía peruana.
-
-  www.saakiritours.com
-  ==============================
-  `;
-
-    const blob = new Blob([contenido], {
-      type: "text/plain;charset=utf-8",
+    const dataUrl = await toPng(boletaRef.current, {
+      cacheBust: true,
+      pixelRatio: 2,
     });
 
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `boleta-saakiri-${paquete.id}-${Date.now()}.txt`;
-    a.click();
-
-    URL.revokeObjectURL(url);
+    const link = document.createElement("a");
+    link.download = `boleta-saakiri-${Date.now()}.png`;
+    link.href = dataUrl;
+    link.click();
   }
+
+  // function descargarBoletaTXT(datos, paquete, tipo, precioSeleccionado) {
+  //   const personas = Number(datos.numPersonas);
+  //   const total = precioSeleccionado * personas;
+
+  //   const contenido = `
+  // ==============================
+  //         SÁAKIRI TOURS
+  //   Puerto Maldonado - Perú
+  // ==============================
+
+  // ¡Gracias por reservar con nosotros!
+
+  // Cliente: ${datos.nombreCliente}
+  // Teléfono: ${datos.telefono}
+  // Correo: ${datos.email}
+
+  // Paquete: ${paquete.nombre}
+  // Duración: ${paquete.duracion}
+  // Plan: ${tipo.toUpperCase()}
+  // Personas: ${personas}
+  // Fecha del tour: ${datos.fechaTour}
+
+  // Precio por persona: $${precioSeleccionado} USD
+  // TOTAL: $${total} USD
+
+  // Mensaje:
+  // ${datos.mensaje || "Sin comentarios"}
+
+  // Fecha de emisión:
+  // ${new Date().toLocaleString()}
+
+  // Te esperamos para vivir una aventura inolvidable
+  // en la Amazonía peruana.
+
+  // https://saakiri-tours.netlify.app
+  // ==============================
+  // `;
+
+  //   const blob = new Blob([contenido], {
+  //     type: "text/plain;charset=utf-8",
+  //   });
+
+  //   const url = URL.createObjectURL(blob);
+
+  //   const a = document.createElement("a");
+  //   a.href = url;
+  //   a.download = `boleta-saakiri-${paquete.id}-${Date.now()}.txt`;
+  //   a.click();
+
+  //   URL.revokeObjectURL(url);
+  // }
 
   async function onSubmit(datos) {
     try {
@@ -128,7 +145,7 @@ export default function Reservar() {
       });
 
       if (resultado.isDenied) {
-        descargarBoletaTXT(datos, paquete, tipo, precioSeleccionado);
+        await descargarBoletaPNG(datos, paquete, tipo, precioSeleccionado);
       }
 
       reset();
@@ -174,7 +191,7 @@ export default function Reservar() {
               required: "El nombre es obligatorio",
               minLength: { value: 3, message: "Mínimo 3 caracteres" },
             })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
+            className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-selva placeholder:text-green-700/60 shadow-sm transition-all duration-200 focus:border-dorado focus:bg-white focus:ring-4 focus:ring-yellow-100 focus:outline-none"
             placeholder="Ej. María García"
           />
           {errors.nombreCliente && (
@@ -198,7 +215,7 @@ export default function Reservar() {
                 message: "Ingresa un teléfono válido",
               },
             })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
+            className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-selva placeholder:text-green-700/60 shadow-sm transition-all duration-200 focus:border-dorado focus:bg-white focus:ring-4 focus:ring-yellow-100 focus:outline-none"
             placeholder="Ej. +51 982 123 456"
           />
           {errors.telefono && (
@@ -220,7 +237,7 @@ export default function Reservar() {
                 message: "Ingresa un correo válido",
               },
             })}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
+            className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-selva placeholder:text-green-700/60 shadow-sm transition-all duration-200 focus:border-dorado focus:bg-white focus:ring-4 focus:ring-yellow-100 focus:outline-none"
             placeholder="Ej. correo@ejemplo.com"
           />
           {errors.email && (
@@ -279,8 +296,8 @@ export default function Reservar() {
             onClick={() => setTipo("basico")}
             className={`w-full rounded-2xl border-2 p-4 text-left transition-all ${
               tipo === "basico"
-                ? "border-dorado bg-yellow-50 ring-2 ring-yellow-200"
-                : "border-gray-200 bg-white hover:border-dorado"
+                ? "border-green-500 bg-green-50 ring-2 ring-green-200"
+                : "border-gray-200 bg-white hover:border-green-400"
             }`}
           >
             <div className="flex items-center justify-between">
@@ -301,13 +318,13 @@ export default function Reservar() {
             onClick={() => setTipo("premium")}
             className={`w-full rounded-2xl border-2 p-4 text-left transition-all ${
               tipo === "premium"
-                ? "border-dorado bg-yellow-50 ring-2 ring-yellow-200"
-                : "border-gray-200 bg-white hover:border-dorado"
+                ? "border-yellow-500 bg-yellow-50 ring-2 ring-yellow-200"
+                : "border-gray-200 bg-white hover:border-yellow-400"
             }`}
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-semibold text-selva">Premium</p>
+                <p className="font-titulo text-2xl text-yellow-700">Premium</p>
                 <p className="text-sm text-gray-500">
                   Mayor comodidad y atención personalizada.
                 </p>
@@ -327,12 +344,12 @@ export default function Reservar() {
           <textarea
             {...register("mensaje")}
             rows={3}
-            className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors resize-none"
+            className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-selva placeholder:text-green-700/60 shadow-sm transition-all duration-200 focus:border-dorado focus:bg-white focus:ring-4 focus:ring-yellow-100 focus:outline-none resize-none min-h-120px"
             placeholder="Cuéntanos algo más sobre tu viaje..."
           />
         </div>
 
-        <div className="rounded-2xl border border-green-200 bg-green-50 p-5 shadow-sm">
+        <div ref={boletaRef} className="rounded-2xl border-2 border-green-200 bg-green-50 p-5 shadow-lg">
           <div className="mb-3 flex items-center justify-between border-b border-green-200 pb-2">
             <h3 className="font-titulo text-xl text-selva">Resumen de tu reserva</h3>
             <span className="rounded-full bg-dorado px-3 py-1 text-xs font-semibold uppercase text-selva">
@@ -369,7 +386,7 @@ export default function Reservar() {
 
           <div className="mt-4 border-t border-green-200 pt-3 flex items-center justify-between">
             <span className="font-semibold text-selva">Total estimado</span>
-            <span className="font-titulo text-2xl text-selva">
+            <span className="font-titulo text-3xl text-selva">
               $
               {precioSeleccionado *
                 Number(watch("numPersonas") || paquete.minPax)}
