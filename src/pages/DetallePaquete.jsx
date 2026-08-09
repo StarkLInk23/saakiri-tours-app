@@ -13,7 +13,7 @@ export default function DetallePaquete() {
   const { paquetes, cargando, error } = usePaquetes();
 
   const [tipo, setTipo] = useState("basico");
-  const [personas, setPersonas] = useState(1);
+  const [personas, setPersonas] = useState(2);
 
   if (cargando) return <Loader texto="Cargando detalle del paquete..." />;
   if (error) return <ErrorMensaje mensaje={error} />;
