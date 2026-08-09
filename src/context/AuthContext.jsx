@@ -1,13 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { loginAdmin } from "../services/api";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  // Inicializa leyendo el token de localStorage — persiste entre recargas
-  const [autenticado, setAutenticado] = useState(() => {
-    return Boolean(localStorage.getItem("token"));
-  });
+  const [autenticado, setAutenticado] = useState(false);
+  const [cargandoAuth, setCargandoAuth] = useState(true);
+
+  // Al iniciar, verifica si hay token válido en localStorage
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setAutenticado(Boolean(token));
+    setCargandoAuth(false);
+  }, []);
 
   async function login(usuario, password) {
     try {
@@ -16,7 +21,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem("nombreAdmin", nombre);
       setAutenticado(true);
       return true;
-    } catch (err) {
+    } catch {
       return false;
     }
   }
@@ -27,6 +32,9 @@ export function AuthProvider({ children }) {
     setAutenticado(false);
   }
 
+  // No renderiza nada hasta verificar el token
+  if (cargandoAuth) return null;
+
   return (
     <AuthContext.Provider value={{ autenticado, login, logout }}>
       {children}
@@ -36,8 +44,6 @@ export function AuthProvider({ children }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth debe usarse dentro de un AuthProvider");
-  }
+  if (!context) throw new Error("useAuth debe usarse dentro de AuthProvider");
   return context;
 }
