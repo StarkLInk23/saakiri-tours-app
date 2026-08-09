@@ -2,6 +2,7 @@
 // Valida los campos antes de enviar, y hace POST al recurso /reservas
 // de MockAPI. Usa SweetAlert2 para confirmar el envío.
 
+import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -15,6 +16,8 @@ export default function Reservar() {
   const navigate = useNavigate();
   const { paquetes, cargando } = usePaquetes();
 
+  const [tipo, setTipo] = useState("basico");
+
   const {
     register,
     handleSubmit,
@@ -26,6 +29,11 @@ export default function Reservar() {
   if (cargando) return <Loader texto="Cargando..." />;
 
   const paquete = paquetes.find((p) => String(p.id) === String(id));
+
+  const precioSeleccionado =
+    tipo === "basico"
+      ? paquete?.precioBasico
+      : paquete?.precioPremium;
 
   if (!paquete) {
     return (
