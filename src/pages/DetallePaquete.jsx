@@ -13,7 +13,7 @@ export default function DetallePaquete() {
   const { paquetes, cargando, error } = usePaquetes();
 
   const [tipo, setTipo] = useState("basico");
-  const [personas, setPersonas] = useState(2);
+  const [personas, setPersonas] = useState(1);
 
   if (cargando) return <Loader texto="Cargando detalle del paquete..." />;
   if (error) return <ErrorMensaje mensaje={error} />;
@@ -79,7 +79,7 @@ export default function DetallePaquete() {
             <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
               <FaUsers size={14} />
               <span>
-                Mínimo {minPax} {minPax === 1 ? "persona" : "personas"}
+                Mínimo {minPax} {minPax === 2 ? "persona" : "personas"}
               </span>
             </div>
 
