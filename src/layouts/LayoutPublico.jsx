@@ -4,11 +4,13 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ThemeToggle from './components/ThemeToggle';
 
 export default function LayoutPublico() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      <ThemeToggle />
       <main className="flex-1 pt-18">
         <Outlet />
       </main>
