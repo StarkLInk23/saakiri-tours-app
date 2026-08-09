@@ -87,7 +87,7 @@ export default function Reservar() {
         {paquete.nombre}
       </h1>
       <p className="text-sm text-gray-500 mb-8">
-        {paquete.duracion} · desde ${paquete.precioBasico} USD por persona
+        {paquete.duracion} · ${paquete.precioBasico} USD por persona
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -160,7 +160,7 @@ export default function Reservar() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Fecha del tour
+              Fecha inicio del tour
             </label>
             <input
               type="date"
