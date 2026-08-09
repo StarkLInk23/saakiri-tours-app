@@ -18,6 +18,7 @@ export default function Reservar() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
     reset,
   } = useForm();
@@ -37,6 +38,58 @@ export default function Reservar() {
     );
   }
 
+  function descargarBoletaTXT(datos, paquete, tipo, precioSeleccionado) {
+    const personas = Number(datos.numPersonas);
+    const total = precioSeleccionado * personas;
+
+    const contenido = `
+  ==============================
+          SÁAKIRI TOURS
+    Puerto Maldonado - Perú
+  ==============================
+
+  ¡Gracias por reservar con nosotros!
+
+  Cliente: ${datos.nombreCliente}
+  Teléfono: ${datos.telefono}
+  Correo: ${datos.email}
+
+  Paquete: ${paquete.nombre}
+  Duración: ${paquete.duracion}
+  Plan: ${tipo.toUpperCase()}
+  Personas: ${personas}
+  Fecha del tour: ${datos.fechaTour}
+
+  Precio por persona: $${precioSeleccionado} USD
+  TOTAL: $${total} USD
+
+  Mensaje:
+  ${datos.mensaje || "Sin comentarios"}
+
+  Fecha de emisión:
+  ${new Date().toLocaleString()}
+
+  Te esperamos para vivir una aventura inolvidable
+  en la Amazonía peruana.
+
+  www.saakiritours.com
+  ==============================
+  `;
+
+    const blob = new Blob([contenido], {
+      type: "text/plain;charset=utf-8",
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `boleta-saakiri-${paquete.id}-${Date.now()}.txt`;
+    a.click();
+
+    URL.revokeObjectURL(url);
+  }
+
   async function onSubmit(datos) {
     try {
       await crearReserva({
@@ -51,13 +104,24 @@ export default function Reservar() {
         createdAt: new Date().toISOString(),
       });
 
-      await Swal.fire({
+      const resultado = await Swal.fire({
         icon: "success",
-        title: "¡Reserva enviada!",
-        text: `Gracias ${datos.nombreCliente}, te contactaremos pronto para confirmar tu reserva de "${paquete.nombre}".`,
+        title: "¡Reserva registrada!",
+        html: `
+          <p>Gracias <b>${datos.nombreCliente}</b>.</p>
+          <p>Tu reserva para <b>${paquete.nombre}</b> fue registrada correctamente.</p>
+          <p>Puedes descargar tu boleta de reserva.</p>
+        `,
         confirmButtonColor: "#2d5016",
-        confirmButtonText: "Entendido",
+        confirmButtonText: "Ir al inicio",
+        showDenyButton: true,
+        denyButtonText: "Descargar boleta",
+        denyButtonColor: "#c89b3c",
       });
+
+      if (resultado.isDenied) {
+        descargarBoletaTXT(datos, paquete, tipo, precioSeleccionado);
+      }
 
       reset();
       navigate("/");
@@ -167,7 +231,7 @@ export default function Reservar() {
               {...register("fechaTour", {
                 required: "Selecciona una fecha",
               })}
-              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
+              className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-selva shadow-sm focus:border-dorado focus:bg-white focus:ring-4 focus:ring-yellow-100 transition-all duration-200"
             />
             {errors.fechaTour && (
               <p className="text-red-600 text-xs mt-1">
@@ -187,7 +251,7 @@ export default function Reservar() {
                 min: { value: paquete.minPax, message: `Mínimo ${paquete.minPax}` },
               })}
               defaultValue={paquete.minPax}
-              className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors"
+              className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-selva shadow-sm focus:border-dorado focus:bg-white focus:ring-4 focus:ring-yellow-100 transition-all duration-200"
             />
             {errors.numPersonas && (
               <p className="text-red-600 text-xs mt-1">
@@ -195,6 +259,56 @@ export default function Reservar() {
               </p>
             )}
           </div>
+        </div>
+
+        <div className="space-y-3">
+          <p className="text-sm font-semibold text-selva">
+            Elige tu experiencia
+          </p>
+
+          <button
+            type="button"
+            onClick={() => setTipo("basico")}
+            className={`w-full rounded-2xl border-2 p-4 text-left transition-all ${
+              tipo === "basico"
+                ? "border-dorado bg-yellow-50 ring-2 ring-yellow-200"
+                : "border-gray-200 bg-white hover:border-dorado"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-semibold text-selva">Básico</p>
+                <p className="text-sm text-gray-500">
+                  Ideal para viajeros aventureros.
+                </p>
+              </div>
+              <p className="font-titulo text-2xl text-selva">
+                ${paquete.precioBasico}
+              </p>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setTipo("premium")}
+            className={`w-full rounded-2xl border-2 p-4 text-left transition-all ${
+              tipo === "premium"
+                ? "border-dorado bg-yellow-50 ring-2 ring-yellow-200"
+                : "border-gray-200 bg-white hover:border-dorado"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-semibold text-selva">Premium</p>
+                <p className="text-sm text-gray-500">
+                  Mayor comodidad y atención personalizada.
+                </p>
+              </div>
+              <p className="font-titulo text-2xl text-selva">
+                ${paquete.precioPremium}
+              </p>
+            </div>
+          </button>
         </div>
 
         {/* Mensaje opcional */}
@@ -208,6 +322,56 @@ export default function Reservar() {
             className="w-full border border-gray-300 px-4 py-2.5 focus:outline-none focus:border-selva transition-colors resize-none"
             placeholder="Cuéntanos algo más sobre tu viaje..."
           />
+        </div>
+
+        <div className="rounded-2xl border border-green-200 bg-green-50 p-5 shadow-sm">
+          <div className="mb-3 flex items-center justify-between border-b border-green-200 pb-2">
+            <h3 className="font-titulo text-xl text-selva">Resumen de tu reserva</h3>
+            <span className="rounded-full bg-dorado px-3 py-1 text-xs font-semibold uppercase text-selva">
+              Pre-boleta
+            </span>
+          </div>
+
+          <div className="space-y-2 text-sm text-gray-700">
+            <div className="flex justify-between">
+              <span>Paquete</span>
+              <span className="font-medium text-selva">{paquete.nombre}</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Plan</span>
+              <span className="font-medium capitalize text-selva">{tipo}</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Personas</span>
+              <span className="font-medium text-selva">{watch("numPersonas") || paquete.minPax}</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Precio por persona</span>
+              <span className="font-medium text-selva">${precioSeleccionado} USD</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Fecha</span>
+              <span className="font-medium text-selva">{watch("fechaTour") || "Sin seleccionar"}</span>
+            </div>
+          </div>
+
+          <div className="mt-4 border-t border-green-200 pt-3 flex items-center justify-between">
+            <span className="font-semibold text-selva">Total estimado</span>
+            <span className="font-titulo text-2xl text-selva">
+              $
+              {precioSeleccionado *
+                Number(watch("numPersonas") || paquete.minPax)}
+              USD
+            </span>
+          </div>
+
+          <p className="mt-3 text-xs text-gray-500">
+            Este resumen aparecerá en la boleta descargable de tu reserva.
+          </p>
         </div>
 
         <button
