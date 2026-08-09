@@ -16,13 +16,6 @@ export default function DetallePaquete() {
   if (error) return <ErrorMensaje mensaje={error} />;
 
   const paquete = paquetes.find((p) => String(p.id) === String(id));
-  const [tipo, setTipo] = useState("basico");
-  const [personas, setPersonas] = useState(minPax || 1);
-
-  const precioSeleccionado =
-    tipo === "basico" ? precioBasico : precioPremium;
-
-  const total = precioSeleccionado * personas;
 
   if (!paquete) {
     return (
@@ -43,6 +36,14 @@ export default function DetallePaquete() {
   const { nombre, duracion, descripcion, precioBasico, precioPremium, minPax, imagen } =
     paquete;
 
+  const [tipo, setTipo] = useState("basico");
+  const [personas, setPersonas] = useState(minPax || 1);
+
+  const precioSeleccionado =
+    tipo === "basico" ? precioBasico : precioPremium;
+
+  const total = precioSeleccionado * personas;
+  
   return (
     <div className="max-w-5xl mx-auto px-5 py-12">
       <button
