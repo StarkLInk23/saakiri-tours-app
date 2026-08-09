@@ -1,8 +1,3 @@
-// Define todas las rutas de la aplicación con React Router DOM.
-// Separa rutas públicas (LayoutPublico) de rutas administrativas
-// (LayoutAdmin), estas últimas protegidas por RutaProtegida:
-// solo accesibles tras iniciar sesión en /admin/login.
-
 import { Routes, Route } from "react-router-dom";
 import { PaquetesProvider } from "./context/PaquetesContext";
 import { AuthProvider } from "./context/AuthContext";
@@ -11,7 +6,10 @@ import RutaProtegida from "./components/RutaProtegida";
 import LayoutPublico from "./layouts/LayoutPublico";
 import LayoutAdmin from "./layouts/LayoutAdmin";
 
-import Catalogo from "./pages/Catalogo";
+import Home from "./pages/Home";
+import Paquetes from "./pages/Paquetes";
+import Nosotros from "./pages/Nosotros";
+import Contacto from "./pages/Contacto";
 import DetallePaquete from "./pages/DetallePaquete";
 import Reservar from "./pages/Reservar";
 import AdminLogin from "./pages/AdminLogin";
@@ -24,17 +22,17 @@ export default function App() {
     <AuthProvider>
       <PaquetesProvider>
         <Routes>
-          {/* Rutas públicas */}
           <Route element={<LayoutPublico />}>
-            <Route path="/" element={<Catalogo />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/paquetes" element={<Paquetes />} />
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/contacto" element={<Contacto />} />
             <Route path="/paquete/:id" element={<DetallePaquete />} />
             <Route path="/reservar/:id" element={<Reservar />} />
           </Route>
 
-          {/* Login del administrador (pública, sin layout admin) */}
           <Route path="/admin/login" element={<AdminLogin />} />
 
-          {/* Rutas administrativas protegidas */}
           <Route element={<RutaProtegida />}>
             <Route path="/admin" element={<LayoutAdmin />}>
               <Route index element={<AdminPaquetes />} />
@@ -43,7 +41,6 @@ export default function App() {
             </Route>
           </Route>
 
-          {/* 404 */}
           <Route path="*" element={<NoEncontrado />} />
         </Routes>
       </PaquetesProvider>
