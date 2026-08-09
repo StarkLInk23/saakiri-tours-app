@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import { PaquetesProvider } from "./context/PaquetesContext";
 import { AuthProvider } from "./context/AuthContext";
 import RutaProtegida from "./components/RutaProtegida";
@@ -21,6 +22,7 @@ export default function App() {
   return (
     <AuthProvider>
       <PaquetesProvider>
+        <ScrollToTop />
         <Routes>
           <Route element={<LayoutPublico />}>
             <Route path="/" element={<Home />} />
