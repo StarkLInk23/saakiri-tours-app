@@ -12,6 +12,9 @@ export default function DetallePaquete() {
   const navigate = useNavigate();
   const { paquetes, cargando, error } = usePaquetes();
 
+  const [tipo, setTipo] = useState("basico");
+  const [personas, setPersonas] = useState(1);
+
   if (cargando) return <Loader texto="Cargando detalle del paquete..." />;
   if (error) return <ErrorMensaje mensaje={error} />;
 
@@ -36,14 +39,13 @@ export default function DetallePaquete() {
   const { nombre, duracion, descripcion, precioBasico, precioPremium, minPax, imagen } =
     paquete;
 
-  const [tipo, setTipo] = useState("basico");
-  const [personas, setPersonas] = useState(minPax || 1);
+  const personasValidas = Math.max(personas, minPax);
 
   const precioSeleccionado =
     tipo === "basico" ? precioBasico : precioPremium;
 
-  const total = precioSeleccionado * personas;
-  
+  const total = precioSeleccionado * personasValidas;
+
   return (
     <div className="max-w-5xl mx-auto px-5 py-12">
       <button
