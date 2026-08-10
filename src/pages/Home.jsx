@@ -64,7 +64,7 @@ export default function Home() {
   const destacados = paquetes.filter((p) => p.activo).slice(0, 3);
 
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* HERO */}
       <section
         className="relative h-screen min-h-125 flex items-center justify-center text-center bg-cover bg-center"
@@ -128,12 +128,12 @@ export default function Home() {
       </section>
 
       {/* POR QUÉ SÁAKIRI */}
-      <section className="py-20 px-5 max-w-5xl mx-auto">
+      <section className="py-20 px-5 max-w-5xl mx-auto bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="text-center mb-12">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-dorado mb-2">
             ¿Por qué elegirnos?
           </p>
-          <h2 className="font-titulo text-4xl text-selva">
+          <h2 className="font-titulo text-4xl text-selva dark:text-white">
             Lo que nos hace diferentes
           </h2>
         </div>
@@ -141,11 +141,11 @@ export default function Home() {
           {diferenciadores.map((d) => (
             <div
               key={d.titulo}
-              className="text-center p-7 border border-dorado-light hover:shadow-lg transition-shadow"
+              className="text-center p-7 border border-dorado-light dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg dark:hover:shadow-gray-900/40 transition-all duration-300 rounded-2xl"
             >
               <div className="flex justify-center mb-4">{d.icono}</div>
               <h3 className="font-titulo text-xl text-selva mb-3">{d.titulo}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{d.desc}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-300 leading-relaxed">{d.desc}</p>
             </div>
           ))}
         </div>
@@ -204,14 +204,14 @@ export default function Home() {
       </section>
 
       {/* PAQUETES DESTACADOS */}
-      <section className="py-20 px-5 bg-white">
+      <section className="py-20 px-5 bg-white dark:bg-gray-950 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-12">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-dorado mb-2">
                 Lo más elegido
               </p>
-              <h2 className="font-titulo text-4xl text-selva">
+              <h2 className="font-titulo text-4xl text-selva dark:text-white">
                 Paquetes destacados
               </h2>
             </div>
@@ -251,7 +251,7 @@ export default function Home() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-selva text-crema py-20 px-5 text-center">
+      <section className="bg-selva dark:bg-black text-crema py-20 px-5 text-center transition-colors duration-300">
         <p className="text-xs uppercase tracking-[0.2em] text-dorado mb-3">
           Empieza tu aventura
         </p>

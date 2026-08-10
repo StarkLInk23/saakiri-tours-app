@@ -342,10 +342,11 @@ export default function Reservar() {
             </span>
           </div>
 
-          <p className="mt-3 text-xs text-gray-500">
-            Este resumen aparecerá en la boleta descargable de tu reserva.
-          </p>
         </div>
+        
+        <p className="mt-3 text-xs text-gray-500">
+          Este resumen aparecerá en la boleta descargable de tu reserva.
+        </p>
 
         <button
           type="submit"
