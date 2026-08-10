@@ -156,10 +156,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-dorado mb-2">
-              Convenios turísticos
+              Convenios turísticos.
             </p>
             <h2 className="font-titulo text-4xl text-selva dark:text-white mb-4">
-              Hoteles aliados en Puerto Maldonado
+              Hoteles aliados en Puerto Maldonado.
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-sm leading-relaxed">
               Trabajamos con alojamientos seleccionados para ofrecer experiencias
