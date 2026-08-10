@@ -1,100 +1,156 @@
-# 🌿 Sáakiri Tours & Travel — Frontend
+# 🌿 Sáakiri Tours & Travel
 
-> Plataforma web para la gestión de paquetes turísticos y solicitudes de reserva de **Sáakiri Tours & Travel**, agencia de turismo real ubicada en Tambopata, Madre de Dios, Perú.
+> Plataforma web para la gestión de paquetes turísticos y reservas de **Sáakiri Tours & Travel**, agencia de turismo especializada en experiencias en la Amazonía peruana.
 
-🌐 **Demo:** [saakiri-tours.netlify.app](https://saakiri-tours.netlify.app/?utm_source=chatgpt.com)
-⚙️ **Backend API:** [saakiri-tours-backend-production.up.railway.app](https://saakiri-tours-backend-production.up.railway.app/?utm_source=chatgpt.com)
-💻 **Backend:** [saakiri-tours-backend](https://github.com/StarkLInk23/saakiri-tours-backend?utm_source=chatgpt.com)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react\&logoColor=white)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite\&logoColor=white)](https://vite.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss\&logoColor=white)](https://tailwindcss.com/)
+[![Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?logo=netlify\&logoColor=white)](https://www.netlify.com/)
 
----
+## 🌎 Demo
 
-## ✨ Sobre el proyecto
+🚀 **Aplicación web:**
+https://saakiri-tours.netlify.app/
 
-Sáakiri Tours & Travel es una aplicación web desarrollada para digitalizar la presentación de paquetes turísticos y gestionar solicitudes de reserva.
+Sáakiri Tours & Travel es una agencia real ubicada en Tambopata, Madre de Dios, Perú.
 
-El frontend permite a los visitantes explorar las experiencias disponibles, consultar información detallada y enviar solicitudes de reserva.
-
-También incorpora un **panel administrativo protegido**, desde donde se pueden gestionar los paquetes turísticos mediante operaciones CRUD.
-
-La aplicación se comunica con un **backend REST propio**, desarrollado con Node.js y Express, utilizando Prisma ORM y PostgreSQL para la persistencia de datos.
+La aplicación permite a los visitantes explorar experiencias turísticas, consultar información detallada y registrar solicitudes de reserva. Además, incorpora un panel administrativo protegido para gestionar los paquetes turísticos mediante operaciones CRUD.
 
 ---
 
-## 🚀 Funcionalidades
+## ✨ Funcionalidades
 
-### 🌎 Área pública
+### 🌴 Área pública
 
 * 🏠 Página de inicio
-* 🌴 Catálogo de paquetes turísticos
+* 🗺️ Catálogo de paquetes turísticos
 * 🔎 Detalle de cada paquete
-* 📋 Formulario de reserva
-* 👥 Información de la agencia
-* 📞 Página de contacto
+* 📋 Registro de reservas
+* 👥 Página Nosotros
+* 📞 Página Contacto
 * 📱 Diseño responsive
+* 🌙 Modo claro / oscuro
+* 💬 Acceso directo a WhatsApp
 
 ### 🔐 Área administrativa
 
-* 🔑 Inicio de sesión administrativo
-* 🛡️ Protección de rutas
+* 🔑 Inicio de sesión
+* 🛡️ Autenticación mediante JWT
 * 📦 Listado de paquetes
 * ➕ Creación de paquetes
 * ✏️ Edición de paquetes
 * 🗑️ Eliminación de paquetes
-* 🔄 Actualización de información mediante API REST
+* 🔄 Actualización del estado de paquetes
+* 🚫 Protección de rutas administrativas
+
+### ⚙️ Integración
+
+El frontend consume una API REST propia desarrollada con Node.js y Express.
+
+```text
+React + Vite
+      │
+    Axios
+      │
+      ▼
+Node.js + Express
+      │
+    Prisma
+      │
+      ▼
+PostgreSQL
+```
 
 ---
 
 ## 🏗️ Arquitectura
 
-```text
-                  USUARIO
-                     │
-                     ▼
-          ┌────────────────────┐
-          │      NETLIFY       │
-          │   React + Vite     │
-          │    Tailwind CSS    │
-          └─────────┬──────────┘
-                    │
-                  Axios
-                    │
-                 HTTPS
-                    │
-                    ▼
-          ┌────────────────────┐
-          │      RAILWAY       │
-          │  Node + Express    │
-          │      REST API      │
-          └─────────┬──────────┘
-                    │
-                  Prisma
-                    │
-                    ▼
-          ┌────────────────────┐
-          │     PostgreSQL     │
-          └────────────────────┘
-```
+El proyecto está separado en dos repositorios:
 
-El proyecto está dividido en dos repositorios:
+| Proyecto      | Tecnología                  | Despliegue |
+| ------------- | --------------------------- | ---------- |
+| Frontend      | React + Vite + Tailwind CSS | Netlify    |
+| Backend       | Node.js + Express + Prisma  | Railway    |
+| Base de datos | PostgreSQL                  | Remota     |
 
-* **Frontend:** `saakiri-tours-app`
-* **Backend:** `saakiri-tours-backend`
+### 🔗 Repositorios relacionados
+
+**Frontend**
+
+https://github.com/StarkLInk23/saakiri-tours-app
+
+**Backend**
+
+https://github.com/StarkLInk23/saakiri-tours-backend
+
+**API desplegada**
+
+https://saakiri-tours-backend-production.up.railway.app/
 
 ---
 
-## 📂 Estructura principal
+## 🧰 Tecnologías utilizadas
+
+### 🎨 Frontend
+
+* ⚛️ React 19
+* ⚡ Vite
+* 🎨 Tailwind CSS 4
+* 🧭 React Router DOM
+* 🔗 Axios
+* 📝 React Hook Form
+* 🔔 SweetAlert2
+* 🎯 React Icons
+* 🧠 Context API
+
+### 🧪 Testing
+
+* 🧪 Vitest
+* ⚛️ React Testing Library
+* 🧩 Jest DOM
+* 🌐 JSDOM
+
+### 🚀 Deploy
+
+* ▲ Netlify
+* 🐙 GitHub
+
+---
+
+## 📂 Estructura
 
 ```text
 src/
-├── components/       # Componentes reutilizables
-│   └── __tests__/    # Pruebas de componentes
-├── context/          # Context API y estado global
-├── layouts/          # Layouts público y administrativo
-├── pages/            # Vistas de la aplicación
-├── services/         # Comunicación con la API
-├── App.jsx           # Rutas principales
-├── index.css         # Estilos globales
-└── main.jsx          # Punto de entrada
+├── components/
+│   ├── Navbar
+│   ├── Footer
+│   ├── PaqueteCard
+│   └── Estado
+│
+├── context/
+│   ├── AuthContext
+│   ├── PaquetesContext
+│   └── ThemeContext
+│
+├── layouts/
+│   ├── LayoutPublic
+│   └── LayoutAdmin
+│
+├── pages/
+│   ├── Home
+│   ├── Paquetes
+│   ├── DetallePaquete
+│   ├── Reservar
+│   ├── Nosotros
+│   ├── Contacto
+│   ├── Login
+│   └── administración
+│
+├── services/
+│   └── api.js
+│
+├── App.jsx
+└── main.jsx
 ```
 
 ---
@@ -103,66 +159,77 @@ src/
 
 | Ruta                | Descripción               |
 | ------------------- | ------------------------- |
-| `/`                 | Página de inicio          |
-| `/paquetes`         | Catálogo de paquetes      |
+| `/`                 | Inicio                    |
+| `/paquetes`         | Catálogo turístico        |
 | `/paquete/:id`      | Detalle del paquete       |
 | `/reservar/:id`     | Formulario de reserva     |
 | `/nosotros`         | Información de la agencia |
 | `/contacto`         | Información de contacto   |
-| `/admin/login`      | Acceso administrativo     |
-| `/admin`            | Panel de administración   |
+| `/login`            | Acceso administrativo     |
+| `/admin`            | Panel administrativo      |
 | `/admin/nuevo`      | Crear paquete             |
 | `/admin/editar/:id` | Editar paquete            |
 
 ---
 
-## 🧰 Tecnologías utilizadas
+## 🔌 API utilizada
 
-### 🎨 Frontend
+El frontend se comunica con el backend mediante Axios.
 
-<p align="left">
-  <img src="https://cdn.simpleicons.org/react/61DAFB" width="42" alt="React"/>
-  <img src="https://cdn.simpleicons.org/vite/646CFF" width="42" alt="Vite"/>
-  <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="42" alt="Tailwind CSS"/>
-  <img src="https://cdn.simpleicons.org/reactrouter/CA4245" width="42" alt="React Router"/>
-</p>
+### Autenticación
 
-**React 19 · Vite · Tailwind CSS · React Router DOM**
+```text
+POST /api/auth/login
+```
 
-### 🔌 Comunicación y formularios
+### Paquetes
 
-<p align="left">
-  <img src="https://cdn.simpleicons.org/axios/5A29E4" width="42" alt="Axios"/>
-</p>
+```text
+GET    /api/paquetes
+GET    /api/paquetes/:id
+POST   /api/paquetes
+PUT    /api/paquetes/:id
+DELETE /api/paquetes/:id
+```
 
-**Axios · React Hook Form**
+### Reservas
 
-### 🧩 UI y utilidades
+```text
+GET    /api/reservas
+POST   /api/reservas
+```
 
-**SweetAlert2 · React Icons · Context API**
+Las rutas administrativas requieren autenticación mediante JWT.
 
-### 🧪 Testing
+---
 
-<p align="left">
-  <img src="https://cdn.simpleicons.org/vitest/6E9F18" width="42" alt="Vitest"/>
-</p>
+## 🧪 Testing
 
-**Vitest · React Testing Library**
+El frontend incluye pruebas básicas utilizando:
 
-### ☁️ Despliegue
+```text
+Vitest
+React Testing Library
+Jest DOM
+```
 
-<p align="left">
-  <img src="https://cdn.simpleicons.org/netlify/00C7B7" width="42" alt="Netlify"/>
-  <img src="https://cdn.simpleicons.org/railway/000000" width="42" alt="Railway"/>
-</p>
+Ejecutar:
 
-**Netlify · Railway**
+```bash
+npm run test
+```
+
+Modo desarrollo de pruebas:
+
+```bash
+npm run test:watch
+```
 
 ---
 
 ## 🚀 Instalación local
 
-### 1. Clonar el repositorio
+### 1. Clonar
 
 ```bash
 git clone https://github.com/StarkLInk23/saakiri-tours-app.git
@@ -175,98 +242,82 @@ cd saakiri-tours-app
 npm install
 ```
 
-### 3. Configurar variables de entorno
-
-Crear un archivo `.env` según la configuración utilizada por el proyecto.
-
-> No subir credenciales, tokens ni variables sensibles al repositorio.
-
-### 4. Ejecutar en desarrollo
+### 3. Ejecutar
 
 ```bash
 npm run dev
 ```
 
-### 5. Ejecutar pruebas
-
-```bash
-npm run test
-```
-
-### 6. Generar build de producción
+### 4. Build de producción
 
 ```bash
 npm run build
 ```
 
-### 7. Previsualizar el build
+### 5. Preview
 
 ```bash
 npm run preview
 ```
 
+> Para utilizar todas las funcionalidades es necesario disponer del backend configurado y accesible.
+
 ---
 
-## 🔗 Integración con el backend
+## 🔄 Evolución del proyecto
 
-El frontend consume la API REST desarrollada específicamente para el proyecto.
+El proyecto evolucionó durante las diferentes etapas del curso:
 
 ```text
-React
-  │
-  │ Axios / HTTP
-  ▼
+Frontend inicial
+      ↓
+React + Vite + Tailwind
+      ↓
+CRUD con API simulada
+      ↓
+Backend propio
+      ↓
 Node.js + Express
-  │
-  │ Prisma
-  ▼
-PostgreSQL
+      ↓
+PostgreSQL + Prisma
+      ↓
+JWT + bcrypt
+      ↓
+Deploy
+      ↓
+Netlify + Railway
 ```
 
-La configuración de la URL de la API se gestiona mediante variables de entorno.
+MockAPI fue utilizado durante una etapa anterior del desarrollo como API simulada. La versión final utiliza un backend propio conectado a PostgreSQL.
 
 ---
 
 ## 📌 Estado del proyecto
 
-### 🟢 Proyecto funcional y desplegado
+### 🟢 Proyecto final — desplegado
 
-El frontend se encuentra desplegado en **Netlify** y conectado al backend REST desplegado en **Railway**.
+El frontend se encuentra publicado en Netlify y conectado al backend REST desplegado en Railway.
 
-La solución cuenta actualmente con:
+La solución final integra:
 
-* Frontend React + Vite
-* Diseño responsive
-* Navegación SPA
-* Context API
-* Formularios controlados
-* CRUD administrativo
-* Autenticación administrativa
+* React
+* Vite
+* Tailwind CSS
 * API REST propia
+* Node.js
+* Express
+* Prisma
 * PostgreSQL
-* Prisma ORM
-* Testing básico
-* Despliegue en producción
+* JWT
+* CRUD administrativo
+* Sistema de reservas
+* Testing
+* Deploy
 
 ---
 
-## 🌎 Proyecto
+## 🌿 Sáakiri Tours & Travel
 
-**Sáakiri Tours & Travel**
-Tambopata, Madre de Dios — Perú
+**Tambopata, Madre de Dios — Perú · 2026**
 
-Proyecto Integrador · Desarrollo Web
-2026
-
----
-
-### 💻 Tecnologías
-
-<p align="center">
-  <img src="https://cdn.simpleicons.org/react/61DAFB" width="45" alt="React"/>
-  <img src="https://cdn.simpleicons.org/vite/646CFF" width="45" alt="Vite"/>
-  <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="45" alt="Tailwind CSS"/>
-  <img src="https://cdn.simpleicons.org/axios/5A29E4" width="45" alt="Axios"/>
-  <img src="https://cdn.simpleicons.org/vitest/6E9F18" width="45" alt="Vitest"/>
-  <img src="https://cdn.simpleicons.org/netlify/00C7B7" width="45" alt="Netlify"/>
-</p>
+> De una gestión turística tradicional a una plataforma digital propia.
