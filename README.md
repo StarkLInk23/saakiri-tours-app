@@ -1,42 +1,78 @@
-# 🌿 Sáakiri Tours & Travel
+# 🌿 Sáakiri Tours & Travel — Frontend
 
-> Plataforma web para la gestión de paquetes turísticos y reservas de **Sáakiri Tours & Travel**, agencia de turismo especializada en experiencias en la Amazonía peruana.
+> Plataforma web para la gestión de paquetes turísticos y solicitudes de reserva de **Sáakiri Tours & Travel**, agencia de turismo real ubicada en Tambopata, Madre de Dios, Perú.
+
+🌐 **Demo:** [saakiri-tours.netlify.app](https://saakiri-tours.netlify.app/?utm_source=chatgpt.com)
+⚙️ **Backend API:** [saakiri-tours-backend-production.up.railway.app](https://saakiri-tours-backend-production.up.railway.app/?utm_source=chatgpt.com)
+💻 **Backend:** [saakiri-tours-backend](https://github.com/StarkLInk23/saakiri-tours-backend?utm_source=chatgpt.com)
+
+---
 
 ## ✨ Sobre el proyecto
 
-Sáakiri Tours permite a los usuarios explorar paquetes turísticos, consultar sus detalles y realizar solicitudes de reserva.
+Sáakiri Tours & Travel es una aplicación web desarrollada para digitalizar la presentación de paquetes turísticos y gestionar solicitudes de reserva.
 
-El sistema cuenta además con un **panel administrativo** para gestionar los paquetes mediante operaciones CRUD y una **API REST propia** conectada a PostgreSQL.
+El frontend permite a los visitantes explorar las experiencias disponibles, consultar información detallada y enviar solicitudes de reserva.
 
-### 🚀 Características
+También incorpora un **panel administrativo protegido**, desde donde se pueden gestionar los paquetes turísticos mediante operaciones CRUD.
 
+La aplicación se comunica con un **backend REST propio**, desarrollado con Node.js y Express, utilizando Prisma ORM y PostgreSQL para la persistencia de datos.
+
+---
+
+## 🚀 Funcionalidades
+
+### 🌎 Área pública
+
+* 🏠 Página de inicio
 * 🌴 Catálogo de paquetes turísticos
-* 🔎 Detalle de cada experiencia
-* 📋 Registro de reservas
-* 🔐 Autenticación administrativa
-* ⚙️ Panel de administración
-* ✏️ CRUD de paquetes
-* 🔄 Comunicación mediante API REST
-* 🗄️ Persistencia con PostgreSQL
+* 🔎 Detalle de cada paquete
+* 📋 Formulario de reserva
+* 👥 Información de la agencia
+* 📞 Página de contacto
 * 📱 Diseño responsive
-* 🧪 Pruebas básicas del frontend
+
+### 🔐 Área administrativa
+
+* 🔑 Inicio de sesión administrativo
+* 🛡️ Protección de rutas
+* 📦 Listado de paquetes
+* ➕ Creación de paquetes
+* ✏️ Edición de paquetes
+* 🗑️ Eliminación de paquetes
+* 🔄 Actualización de información mediante API REST
 
 ---
 
 ## 🏗️ Arquitectura
 
 ```text
-React + Vite
-     │
-   Axios
-     │
-     ▼
-Node.js + Express
-     │
-   Prisma
-     │
-     ▼
-PostgreSQL
+                  USUARIO
+                     │
+                     ▼
+          ┌────────────────────┐
+          │      NETLIFY       │
+          │   React + Vite     │
+          │    Tailwind CSS    │
+          └─────────┬──────────┘
+                    │
+                  Axios
+                    │
+                 HTTPS
+                    │
+                    ▼
+          ┌────────────────────┐
+          │      RAILWAY       │
+          │  Node + Express    │
+          │      REST API      │
+          └─────────┬──────────┘
+                    │
+                  Prisma
+                    │
+                    ▼
+          ┌────────────────────┐
+          │     PostgreSQL     │
+          └────────────────────┘
 ```
 
 El proyecto está dividido en dos repositorios:
@@ -46,71 +82,191 @@ El proyecto está dividido en dos repositorios:
 
 ---
 
+## 📂 Estructura principal
+
+```text
+src/
+├── components/       # Componentes reutilizables
+│   └── __tests__/    # Pruebas de componentes
+├── context/          # Context API y estado global
+├── layouts/          # Layouts público y administrativo
+├── pages/            # Vistas de la aplicación
+├── services/         # Comunicación con la API
+├── App.jsx           # Rutas principales
+├── index.css         # Estilos globales
+└── main.jsx          # Punto de entrada
+```
+
+---
+
+## 🧭 Principales rutas
+
+| Ruta                | Descripción               |
+| ------------------- | ------------------------- |
+| `/`                 | Página de inicio          |
+| `/paquetes`         | Catálogo de paquetes      |
+| `/paquete/:id`      | Detalle del paquete       |
+| `/reservar/:id`     | Formulario de reserva     |
+| `/nosotros`         | Información de la agencia |
+| `/contacto`         | Información de contacto   |
+| `/admin/login`      | Acceso administrativo     |
+| `/admin`            | Panel de administración   |
+| `/admin/nuevo`      | Crear paquete             |
+| `/admin/editar/:id` | Editar paquete            |
+
+---
+
 ## 🧰 Tecnologías utilizadas
 
 ### 🎨 Frontend
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white" alt="React Router" />
+<p align="left">
+  <img src="https://cdn.simpleicons.org/react/61DAFB" width="42" alt="React"/>
+  <img src="https://cdn.simpleicons.org/vite/646CFF" width="42" alt="Vite"/>
+  <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="42" alt="Tailwind CSS"/>
+  <img src="https://cdn.simpleicons.org/reactrouter/CA4245" width="42" alt="React Router"/>
 </p>
 
-### ⚙️ Backend & Base de datos
+**React 19 · Vite · Tailwind CSS · React Router DOM**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
-  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
-  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+### 🔌 Comunicación y formularios
+
+<p align="left">
+  <img src="https://cdn.simpleicons.org/axios/5A29E4" width="42" alt="Axios"/>
 </p>
 
-### 🧩 Librerías & Testing
+**Axios · React Hook Form**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios" />
-  <img src="https://img.shields.io/badge/React_Hook_Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white" alt="React Hook Form" />
-  <img src="https://img.shields.io/badge/SweetAlert2-FF6B6B?style=for-the-badge&logo=sweetalert2&logoColor=white" alt="SweetAlert2" />
-  <img src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
-  <img src="https://img.shields.io/badge/React_Testing_Library-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white" alt="React Testing Library" />
+### 🧩 UI y utilidades
+
+**SweetAlert2 · React Icons · Context API**
+
+### 🧪 Testing
+
+<p align="left">
+  <img src="https://cdn.simpleicons.org/vitest/6E9F18" width="42" alt="Vitest"/>
 </p>
+
+**Vitest · React Testing Library**
+
+### ☁️ Despliegue
+
+<p align="left">
+  <img src="https://cdn.simpleicons.org/netlify/00C7B7" width="42" alt="Netlify"/>
+  <img src="https://cdn.simpleicons.org/railway/000000" width="42" alt="Railway"/>
+</p>
+
+**Netlify · Railway**
 
 ---
 
-## 🚀 Instalación
+## 🚀 Instalación local
 
-### Frontend
+### 1. Clonar el repositorio
 
 ```bash
 git clone https://github.com/StarkLInk23/saakiri-tours-app.git
 cd saakiri-tours-app
-npm install
-npm run dev
 ```
 
-### Backend
+### 2. Instalar dependencias
 
 ```bash
-git clone https://github.com/StarkLInk23/saakiri-tours-backend.git
-cd saakiri-tours-backend
 npm install
+```
+
+### 3. Configurar variables de entorno
+
+Crear un archivo `.env` según la configuración utilizada por el proyecto.
+
+> No subir credenciales, tokens ni variables sensibles al repositorio.
+
+### 4. Ejecutar en desarrollo
+
+```bash
 npm run dev
 ```
 
-> El backend requiere las variables de entorno necesarias para la conexión con PostgreSQL y la configuración de autenticación.
+### 5. Ejecutar pruebas
+
+```bash
+npm run test
+```
+
+### 6. Generar build de producción
+
+```bash
+npm run build
+```
+
+### 7. Previsualizar el build
+
+```bash
+npm run preview
+```
 
 ---
 
-## 📌 Estado
+## 🔗 Integración con el backend
 
-🟡 **En desarrollo**
+El frontend consume la API REST desarrollada específicamente para el proyecto.
 
-El proyecto se encuentra en proceso de integración y preparación para producción, incorporando progresivamente backend propio, PostgreSQL, autenticación, validaciones, testing y despliegue.
+```text
+React
+  │
+  │ Axios / HTTP
+  ▼
+Node.js + Express
+  │
+  │ Prisma
+  ▼
+PostgreSQL
+```
+
+La configuración de la URL de la API se gestiona mediante variables de entorno.
 
 ---
+
+## 📌 Estado del proyecto
+
+### 🟢 Proyecto funcional y desplegado
+
+El frontend se encuentra desplegado en **Netlify** y conectado al backend REST desplegado en **Railway**.
+
+La solución cuenta actualmente con:
+
+* Frontend React + Vite
+* Diseño responsive
+* Navegación SPA
+* Context API
+* Formularios controlados
+* CRUD administrativo
+* Autenticación administrativa
+* API REST propia
+* PostgreSQL
+* Prisma ORM
+* Testing básico
+* Despliegue en producción
+
+---
+
+## 🌎 Proyecto
+
+**Sáakiri Tours & Travel**
+Tambopata, Madre de Dios — Perú
+
+Proyecto Integrador · Desarrollo Web
+2026
+
+---
+
+### 💻 Tecnologías
 
 <p align="center">
-  🌿 <strong>Sáakiri Tours & Travel</strong><br>
-  Puerto Maldonado, Madre de Dios — Perú · 2026
+  <img src="https://cdn.simpleicons.org/react/61DAFB" width="45" alt="React"/>
+  <img src="https://cdn.simpleicons.org/vite/646CFF" width="45" alt="Vite"/>
+  <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="45" alt="Tailwind CSS"/>
+  <img src="https://cdn.simpleicons.org/axios/5A29E4" width="45" alt="Axios"/>
+  <img src="https://cdn.simpleicons.org/vitest/6E9F18" width="45" alt="Vitest"/>
+  <img src="https://cdn.simpleicons.org/netlify/00C7B7" width="45" alt="Netlify"/>
 </p>
