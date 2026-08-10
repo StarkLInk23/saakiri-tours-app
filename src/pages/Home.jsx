@@ -28,6 +28,36 @@ const diferenciadores = [
     desc: "Paquetes desde medio día hasta 5 días, adaptados a tu tiempo y presupuesto.",
   },
 ];
+const hotelesAliados = [
+  {
+    nombre: "Hotel Enai",
+    foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnmezcGAdX1vzU9yf91ztkLGf8AbQULOVZaPyRUhwv9w&s=10",
+  },
+  {
+    nombre: "Boulevard Hotel",
+    foto: "https://hotelboulevardmaldonado.com/wp-content/uploads/2025/11/Hotel-Boulevard-Tambopata.png",
+  },
+  {
+    nombre: "Libélula Hotel",
+    foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzOb4YfenO9K-3FeOmOe6uIxKiofp5L-7Z2Zl7S4Cv6w&s=10",
+  },
+  {
+    nombre: "Wasai Lodge",
+    foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4bIZmMuG6p2HeY_LLLJkPl2XHeMzvDr1jCaiDSAS11g&s=10",
+  },
+  {
+    nombre: "Hotel Centenario",
+    foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFbdcs-2n5VXFBw5ZtrxUUzMQr9lx4O_aoqi-_ZKkYbA&s=10",
+  },
+  {
+    nombre: "Hotel Golden",
+    foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJeUOZJ9ptfbU2QSb3Eiz5Egy69O7zcRhjRzzbWtS9_w&s=10",
+  },
+  {
+    nombre: "Chonta Hospedaje",
+    foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu28ScX5X2SNZlApO-vtsArLije5reumUz3mGFiReOIw&s=10",
+  },
+];
 
 export default function Home() {
   const { paquetes, cargando } = usePaquetes();
@@ -118,6 +148,58 @@ export default function Home() {
               <p className="text-sm text-gray-500 leading-relaxed">{d.desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* HOTELES ALIADOS */}
+      <section className="py-20 px-5 bg-crema dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-dorado mb-2">
+              Convenios turísticos.
+            </p>
+            <h2 className="font-titulo text-4xl text-selva dark:text-white mb-4">
+              Hoteles aliados en Puerto Maldonado.
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-sm leading-relaxed">
+              Trabajamos con alojamientos seleccionados para ofrecer experiencias
+              cómodas y seguras antes y después de cada aventura amazónica.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto cursor-grab active:cursor-grabbing pb-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-dorado/60 [&::-webkit-scrollbar-thumb]:rounded-full">
+            <div className="flex gap-5 w-max pr-2">
+              {hotelesAliados.map((hotel) => (
+                <div
+                  key={hotel.nombre}
+                  className="group min-w-65 max-w-65 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 border border-dorado-light dark:border-gray-700 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative h-52 overflow-hidden">
+                    <img
+                      src={hotel.foto}
+                      alt={hotel.nombre}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/45 to-transparent" />
+                  </div>
+
+                  <div className="p-4 text-center">
+                    <h3 className="font-titulo text-lg text-selva dark:text-white">
+                      {hotel.nombre}
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      Hotel aliado · Puerto Maldonado
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
+            Desliza horizontalmente para ver todos los hoteles aliados.
+          </p>
         </div>
       </section>
 

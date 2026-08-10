@@ -140,7 +140,7 @@ export default function DetallePaquete() {
                 .sort((a, b) => a.dia - b.dia)
                 .map((d) => (
                   <div key={d.dia} className="flex gap-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <span className="flex items-center justify-center w-11 h-11 rounded-full bg-selva text-white font-titulo text-lg">
                         {d.dia}
                       </span>
@@ -160,7 +160,7 @@ export default function DetallePaquete() {
             <ul className="grid sm:grid-cols-2 gap-3 max-w-3xl">
               {incluye.map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                  <FaCheckCircle className="text-selva mt-0.5 flex-shrink-0" size={14} />
+                  <FaCheckCircle className="text-selva mt-0.5 shrink-0" size={14} />
                   {item}
                 </li>
               ))}
