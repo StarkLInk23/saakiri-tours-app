@@ -1,15 +1,17 @@
 // Página de detalle de un paquete específico. Lee el :id de la URL
 // con useParams y busca el paquete dentro del contexto global.
 
+import { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { usePaquetes } from "../context/PaquetesContext";
 import { Loader, ErrorMensaje } from "../components/Estado";
-import { FaArrowLeft, FaUsers, FaClock } from "react-icons/fa";
+import { FaArrowLeft, FaUsers, FaClock, FaCheckCircle } from "react-icons/fa";
 
 export default function DetallePaquete() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { paquetes, cargando, error } = usePaquetes();
+  const [tabActivo, setTabActivo] = useState("descripcion");
 
   if (cargando) return <Loader />;
   if (error) return <ErrorMensaje mensaje={error} />;
@@ -32,8 +34,26 @@ export default function DetallePaquete() {
     );
   }
 
-  const { nombre, duracion, descripcion, precioBasico, precioPremium, minPax, imagen } 
-    = paquete;
+  const {
+    nombre,
+    duracion,
+    descripcion,
+    precioBasico,
+    precioPremium,
+    minPax,
+    imagen,
+    itinerario,
+    incluye,
+  } = paquete;
+
+  const hayItinerario = Array.isArray(itinerario) && itinerario.length > 0;
+  const hayIncluye = Array.isArray(incluye) && incluye.length > 0;
+
+  const tabs = [
+    { id: "descripcion", label: "Descripción" },
+    ...(hayItinerario ? [{ id: "itinerario", label: "Itinerario" }] : []),
+    ...(hayIncluye ? [{ id: "incluye", label: "Incluye" }] : []),
+  ];
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -60,13 +80,9 @@ export default function DetallePaquete() {
             <FaClock size={12} /> {duracion}
           </p>
 
-          <h1 className="font-titulo text-4xl text-selva mb-4">
-            {nombre}
-          </h1>
+          <h1 className="font-titulo text-4xl text-selva mb-4">{nombre}</h1>
 
-          <p className="text-gray-600 leading-relaxed mb-6">
-            {descripcion}
-          </p>
+          <p className="text-gray-600 leading-relaxed mb-6">{descripcion}</p>
 
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
             <FaUsers size={14} />
@@ -76,19 +92,13 @@ export default function DetallePaquete() {
           <div className="grid grid-cols-2 gap-4 mb-8">
             <div className="border border-dorado-light p-4 text-center rounded-xl">
               <p className="text-xs uppercase text-gray-400 mb-1">Básico</p>
-              <p className="font-titulo text-2xl text-selva">
-                ${precioBasico}
-              </p>
+              <p className="font-titulo text-2xl text-selva">${precioBasico}</p>
               <p className="text-xs text-gray-400">USD / persona</p>
             </div>
 
             <div className="border border-dorado bg-dorado-light/20 p-4 text-center rounded-xl">
-              <p className="text-xs uppercase text-tierra mb-1">
-                Premium
-              </p>
-              <p className="font-titulo text-2xl text-selva">
-                ${precioPremium}
-              </p>
+              <p className="text-xs uppercase text-tierra mb-1">Premium</p>
+              <p className="font-titulo text-2xl text-selva">${precioPremium}</p>
               <p className="text-xs text-gray-400">USD / persona</p>
             </div>
           </div>
@@ -100,6 +110,63 @@ export default function DetallePaquete() {
             Reservar este paquete
           </Link>
         </div>
+      </div>
+
+      {/* Pestañas: Descripción / Itinerario / Incluye */}
+      <div className="mt-14">
+        <div className="flex gap-2 border-b border-gray-200 mb-6 overflow-x-auto">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setTabActivo(tab.id)}
+              className={`whitespace-nowrap px-5 py-3 text-sm font-medium uppercase tracking-wider transition-colors border-b-2 ${
+                tabActivo === tab.id
+                  ? "border-dorado text-selva"
+                  : "border-transparent text-gray-400 hover:text-selva"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {tabActivo === "descripcion" && (
+          <p className="text-gray-600 leading-relaxed max-w-3xl">{descripcion}</p>
+        )}
+
+        {tabActivo === "itinerario" && hayItinerario && (
+          <div className="space-y-6 max-w-3xl">
+            {itinerario
+              .slice()
+              .sort((a, b) => a.dia - b.dia)
+              .map((d) => (
+                <div key={d.dia} className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <span className="flex items-center justify-center w-11 h-11 rounded-full bg-selva text-white font-titulo text-lg">
+                      {d.dia}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-selva mb-1">{d.titulo}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {d.descripcion}
+                    </p>
+                  </div>
+                </div>
+              ))}
+          </div>
+        )}
+
+        {tabActivo === "incluye" && hayIncluye && (
+          <ul className="grid sm:grid-cols-2 gap-3 max-w-3xl">
+            {incluye.map((item, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                <FaCheckCircle className="text-selva mt-0.5 flex-shrink-0" size={14} />
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
