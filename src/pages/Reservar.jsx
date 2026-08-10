@@ -63,58 +63,6 @@ export default function Reservar() {
     link.click();
   }
 
-  // function descargarBoletaTXT(datos, paquete, tipo, precioSeleccionado) {
-  //   const personas = Number(datos.numPersonas);
-  //   const total = precioSeleccionado * personas;
-
-  //   const contenido = `
-  // ==============================
-  //         SÁAKIRI TOURS
-  //   Puerto Maldonado - Perú
-  // ==============================
-
-  // ¡Gracias por reservar con nosotros!
-
-  // Cliente: ${datos.nombreCliente}
-  // Teléfono: ${datos.telefono}
-  // Correo: ${datos.email}
-
-  // Paquete: ${paquete.nombre}
-  // Duración: ${paquete.duracion}
-  // Plan: ${tipo.toUpperCase()}
-  // Personas: ${personas}
-  // Fecha del tour: ${datos.fechaTour}
-
-  // Precio por persona: $${precioSeleccionado} USD
-  // TOTAL: $${total} USD
-
-  // Mensaje:
-  // ${datos.mensaje || "Sin comentarios"}
-
-  // Fecha de emisión:
-  // ${new Date().toLocaleString()}
-
-  // Te esperamos para vivir una aventura inolvidable
-  // en la Amazonía peruana.
-
-  // https://saakiri-tours.netlify.app
-  // ==============================
-  // `;
-
-  //   const blob = new Blob([contenido], {
-  //     type: "text/plain;charset=utf-8",
-  //   });
-
-  //   const url = URL.createObjectURL(blob);
-
-  //   const a = document.createElement("a");
-  //   a.href = url;
-  //   a.download = `boleta-saakiri-${paquete.id}-${Date.now()}.txt`;
-  //   a.click();
-
-  //   URL.revokeObjectURL(url);
-  // }
-
   async function onSubmit(datos) {
     try {
       await crearReserva({
@@ -176,7 +124,7 @@ export default function Reservar() {
         {paquete.nombre}
       </h1>
       <p className="text-sm text-gray-500 mb-8">
-        {paquete.duracion} · ${paquete.precioBasico} USD por persona
+        {paquete.duracion} · Desde ${paquete.precioBasico} USD por persona
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
